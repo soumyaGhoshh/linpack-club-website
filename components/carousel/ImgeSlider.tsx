@@ -51,6 +51,17 @@ export default function ImageSlider() {
               DIRECTION
             </span>
           </h1>
+          
+          {/* Event Taglines */}
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-gray-700 dark:text-gray-300 mb-3 font-serif">
+            
+          </h2>
+          <p className="text-lg md:text-xl text-blue-600 dark:text-blue-400 font-medium mb-4">
+            
+          </p>
+          <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 font-light">
+            
+          </p>
         </motion.div>
 
         {/* Editorial Layout Event Card */}
@@ -81,10 +92,9 @@ export default function ImageSlider() {
                 <p className="text-sm text-gray-200 mt-1">From What You Write to Where You Go</p>
               </div>
             </div>
-          </div>
 
-          {/* Editorial Content */}
-          <div className="flex flex-col justify-between">
+            {/* Editorial Content - Basic Info Only */}
+            <div className="flex flex-col justify-between">
             <div>
               <div className="mb-6">
                 <span className="inline-block px-3 py-1.5 text-xs font-semibold text-blue-600 bg-blue-50 dark:bg-blue-900/20 rounded-full mb-4">
@@ -158,6 +168,9 @@ export default function ImageSlider() {
           </div>
         </div>
 
+        {/* Event Coordinators - Added to Event Information Section */}
+      </div>
+
         {/* Editorial Tags */}
         <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800 w-full">
           <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
@@ -196,8 +209,8 @@ export default function ImageSlider() {
 
         {/* Enhanced main heading with magazine-style typography */}
         <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extralight tracking-[-0.03em] text-black dark:text-white mb-6 leading-[0.9] font-serif max-w-5xl mx-auto">
-          <span className="block lg:inline">Our</span>
-          <span className="block lg:inline font-thin italic bg-gradient-to-r from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent mt-2 lg:mt-0 lg:ml-4">
+          <span className="inline">Our</span>
+          <span className="inline font-thin italic bg-gradient-to-r from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent ml-4">
             Events
           </span>
         </h1>
@@ -209,7 +222,7 @@ export default function ImageSlider() {
       </motion.div>
 
       {/* Video and Book Section - Magazine Style Enhancement */}
-      <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-12 w-full max-w-6xl mx-auto mt-16 mb-20">
+      <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-12 w-full max-w-6xl mx-auto mt-16 mb-8">
         {/* Video Section with Enhanced Styling */}
         <div className="relative w-full lg:w-1/2 h-[45vh] sm:h-[50vh] lg:h-[60vh] group">
           <div className="absolute inset-0 bg-gradient-to-br from-red-500/20 to-red-700/20 rounded-2xl transform rotate-1 group-hover:rotate-2 transition-all duration-500"></div>
@@ -275,6 +288,8 @@ export default function ImageSlider() {
           </div>
         </div>
       </div>
+      
+    
 
       {/* Join Our Club Section */}
       <div className="relative flex justify-center items-center w-[92vw] sm:w-[85vw] md:w-[80vw] h-auto min-h-[40vh] my-8 px-4">
@@ -305,7 +320,7 @@ export default function ImageSlider() {
             className="mt-6 transform hover:scale-105 transition-all duration-300">
             <button
               type="button"
-              className="px-8 py-4 rounded-full bg-gradient-to-r from-red-500 to-red-600 dark:from-red-600 dark:to-red-700 font-serif font-bold text-base sm:text-lg md:text-xl text-white shadow-lg hover:shadow-xl transition duration-300 tracking-wide"
+              className="px-8 py-4 rounded-full bg-gradient-to-r from-red-500 to-red-600 font-serif font-bold text-base sm:text-lg md:text-xl text-white shadow-lg hover:shadow-xl transition duration-300 tracking-wide border-2 border-red-600 hover:from-red-600 hover:to-red-700 dark:from-red-600 dark:to-red-700 dark:hover:from-red-700 dark:hover:to-red-800"
             >
               Join Us
             </button>

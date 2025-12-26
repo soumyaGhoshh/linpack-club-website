@@ -1,14 +1,9 @@
 "use client"
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
+import Script from 'next/script'
 import { motion } from 'framer-motion'
 import { Mail, MapPin, Phone, Send, Twitter, Instagram, Github, Linkedin } from 'lucide-react'
-
-declare global {
-  interface Window {
-    CustomSubstackWidget: any;
-  }
-}
 
 export default function MagazineContactSection() {
   const [formData, setFormData] = useState({
@@ -47,29 +42,6 @@ export default function MagazineContactSection() {
     return () => {
       clearTimeout(initialDelay);
       clearTimeout(timeoutId);
-    };
-  }, []);
-
-  useEffect(() => {
-    // Adding custom Substack widget script after the component mounts
-    const script = document.createElement("script");
-    script.src = "https://substackapi.com/widget.js";
-    script.async = true;
-    document.body.appendChild(script);
-
-    // Configuring the Substack widget
-    window.CustomSubstackWidget = {
-      substackUrl: "linpack.substack.com",
-      placeholder: "Enter your email",
-      buttonText: "Subscribe",
-      theme: "purple",
-    };
-
-    return () => {
-      // Cleanup the script when the component unmounts
-      if (document.body.contains(script)) {
-        document.body.removeChild(script);
-      }
     };
   }, []);
 
@@ -117,7 +89,7 @@ export default function MagazineContactSection() {
             {/* Reduced main heading with responsive typography */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extralight tracking-[-0.02em] text-black dark:text-white mb-4 leading-[0.9] font-serif max-w-5xl mx-auto">
               <span className="block lg:inline">Let&apos;s Start a </span>
-              <span className="block lg:inline font-thin italic bg-gradient-to-r from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent text-3xl md:text-4xl lg:text-5xl xl:text-6xl mt-2 lg:mt-0 tracking-[-0.01em]">
+              <span className="block lg:inline font-thin italic bg-gradient-to-r from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent text-3xl md:text-4xl lg:text-5xl xl:text-6xl mt-2 lg:mt-0 tracking-[-0.01em] dark:bg-gradient-to-r dark:from-red-400 dark:via-red-500 dark:to-red-600">
                 {typedText}
                 {isTyping && <span className="animate-pulse">|</span>}
               </span>
@@ -139,7 +111,7 @@ export default function MagazineContactSection() {
                   Connect With Us
                 </h2>
                 <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 font-extralight leading-relaxed hidden md:block tracking-wide max-w-lg">
-                  We&apos;re always excited to collaborate on innovative projects and discuss <span className="font-semibold bg-gradient-to-r from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent underline decoration-red-500 decoration-2 underline-offset-2">mathematical research opportunities.</span>
+                  We&apos;re always excited to collaborate on innovative projects and discuss <span className="font-semibold bg-gradient-to-r from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent underline decoration-red-500 decoration-2 underline-offset-2 dark:bg-gradient-to-r dark:from-red-400 dark:via-red-500 dark:to-red-600">mathematical research opportunities.</span>
                 </p>
               </div>
 
@@ -184,7 +156,7 @@ export default function MagazineContactSection() {
                   </p>
                   <div className="flex space-x-3">
                     <motion.a
-                      href="#"
+                      href="https://twitter.com/linpack_club"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       className="w-12 h-12 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg flex items-center justify-center transition-all duration-200 hover:bg-blue-50 dark:hover:bg-blue-950 hover:border-blue-200 dark:hover:border-blue-800"
@@ -221,8 +193,8 @@ export default function MagazineContactSection() {
                   </div>
                 </div>
 
-                {/* Newsletter Subscription - Hidden on mobile, shown on desktop */}
-                <div className="pt-8 border-t border-gray-200 dark:border-gray-800 hidden lg:block">
+                {/* Newsletter Subscription - Visible on all devices */}
+                <div className="pt-8 border-t border-gray-200 dark:border-gray-800">
                   <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/30 dark:to-purple-950/30 rounded-xl p-6 border border-blue-100 dark:border-blue-900/30">
                     <div className="text-center mb-6">
                       <div className="inline-flex items-center space-x-2 mb-3">
@@ -232,16 +204,20 @@ export default function MagazineContactSection() {
                         </p>
                       </div>
                       <h4 className="text-xl md:text-2xl lg:text-3xl font-extralight tracking-[-0.02em] text-black dark:text-white mb-3 font-serif leading-tight">
-                        Stay Connected
+                        Stay Updated
                       </h4>
                       <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed font-extralight tracking-wide">
-                        Get updates on research breakthroughs, events, and mathematical discoveries
+                        Subscribe to our newsletter for the latest updates
                       </p>
                     </div>
                     
-                    {/* Substack Widget Container */}
-                    <div className="max-w-md mx-auto mb-4">
-                      <div id="custom-substack-embed" className="mb-4"></div>
+                    {/* Supascribe Widget Container */}
+                    <div className="max-w-md mx-auto">
+                      <div data-supascribe-embed-id="465755711117" data-supascribe-subscribe></div>
+                      <Script 
+                        src="https://js.supascribe.com/v1/loader/wsSfGwhTK5V8rkZNm5vZXlgeQZ33.js"
+                        strategy="lazyOnload"
+                      />
                     </div>
                   </div>
                 </div>
@@ -331,37 +307,6 @@ export default function MagazineContactSection() {
               </form>
             </motion.div>
           </div>
-
-          {/* Newsletter Section - Mobile Only (appears below contact form) */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            viewport={{ once: true }}
-            className="mt-16 lg:hidden order-3"
-          >
-            <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/30 dark:to-purple-950/30 rounded-xl p-6 border border-blue-100 dark:border-blue-900/30">
-              <div className="text-center mb-6">
-                <div className="inline-flex items-center space-x-2 mb-3">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-                  <p className="text-sm font-medium text-blue-600 dark:text-blue-400 uppercase tracking-wider">
-                    Newsletter
-                  </p>
-                </div>
-                <h4 className="text-xl md:text-2xl font-extralight tracking-[-0.02em] text-black dark:text-white mb-3 font-serif leading-tight">
-                  Stay Connected
-                </h4>
-                <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed font-extralight tracking-wide">
-                  Get updates on research breakthroughs, events, and mathematical discoveries
-                </p>
-              </div>
-              
-              {/* Substack Widget Container */}
-              <div className="max-w-md mx-auto mb-4">
-                <div id="custom-substack-embed-mobile" className="mb-4"></div>
-              </div>
-            </div>
-          </motion.div>
         </div>
       </section>
 
